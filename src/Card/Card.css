@@ -1,0 +1,40 @@
+
+.card-item {
+    width: 250px;
+    height: 400px;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-item img {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, 0%);
+}
+
+.card-status {
+    position: absolute;
+    text-align: center;
+    top: 10px;
+    right: 0;
+    min-width: 50%;
+    height: 8%;
+    background-color: aqua;
+}
+
+.character-live{
+    background-color: #29773E;
+}
+
+.character-dead{
+    background-color: #fa7821;
+}
+.card-info{
+    background-color: blueviolet;
+    position: absolute;
+    bottom: 0;
+}
