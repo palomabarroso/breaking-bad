@@ -7,11 +7,12 @@ import './App.css';
 class App extends Component {
   state = {
     cards: [],
+    search: "",
   }
 
   async componentDidMount() {
     const url = "https://breakingbadapi.com/api/characters/";
-   
+
     const result = await axios.get(url)
       .then((res) => {
         return res.data;
@@ -20,24 +21,39 @@ class App extends Component {
         return error;
       })
 
-    const cards = result;
+    const arraySearch = result.filter(function (characters) {
+      const inputSearch = 'white';
+      
+      if (inputSearch !== '') {
+        return characters.name.toLowerCase().indexOf(inputSearch) > -1;
+      } else {
+        return result
+      }
+    });
+    
+    const cards = arraySearch;
     this.setState({
       cards
     })
   }
+
+  changeSearch = e => {
+    this.setState({ search: e.target.value });
+  }
+
   render() {
     return (
       <div className="App">
         <div className="header">
           <img src={logo} alt="" className="logo" />
-          <input type="search" placeholder="Pesquise por personagens" className="input-search" value=""/>
+          <input placeholder="Pesquise por personagens" className="input-search" onChange={this.changeSearch} />
         </div>
         <div className="card-container">
           <h2>Personagens</h2>
           <div className="card-grid">
             {this.state.cards.map((cardItem) => (
               <Card
-               cardItem={cardItem}
+                cardItem={cardItem}
               />
             ))}
           </div>
