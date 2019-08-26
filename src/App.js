@@ -5,9 +5,14 @@ import Card from './Card/Card';
 import './App.css';
 
 class App extends Component {
-  state = {
-    cards: [],
-    search: "",
+  constructor(props) {
+    super(props);
+    this.state = {
+      cards: [],
+      api: [],
+      inputSearch: ''
+    }
+    this.onChangeSearch = this.onChangeSearch.bind(this);
   }
 
   async componentDidMount() {
@@ -21,24 +26,29 @@ class App extends Component {
         return error;
       })
 
-    const arraySearch = result.filter(function (characters) {
-      const inputSearch = 'white';
-      
+    const cards = result;
+    const api = result;
+    this.setState({
+      cards,
+      api
+    })
+  }
+
+  onChangeSearch(e) {
+    const { api } = this.state;
+    const arraySearch = api.filter(function (characters) {
+      const inputSearch = e.target.value.toLowerCase();
       if (inputSearch !== '') {
         return characters.name.toLowerCase().indexOf(inputSearch) > -1;
       } else {
-        return result
+        return api
       }
     });
-    
+
     const cards = arraySearch;
     this.setState({
       cards
     })
-  }
-
-  changeSearch = e => {
-    this.setState({ search: e.target.value });
   }
 
   render() {
@@ -46,7 +56,7 @@ class App extends Component {
       <div className="App">
         <div className="header">
           <img src={logo} alt="" className="logo" />
-          <input placeholder="Pesquise por personagens" className="input-search" onChange={this.changeSearch} />
+          <input placeholder="Pesquise por personagens" className="input-search" onChange={this.onChangeSearch} />
         </div>
         <div className="card-container">
           <h2>Personagens</h2>
