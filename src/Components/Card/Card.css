@@ -1,4 +1,4 @@
-.card-item {
+.cardItem {
     width: 250px;
     height: 350px;
     color: #fff;
@@ -6,13 +6,14 @@
     margin-bottom: 50px;
 }
 
-.card-item img {
-    position: absolute;
+.imgBackground {
     width: 100%;
     height: 100%;
+    background-size: cover;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.562); 
 }
 
-.card-status {
+.cardStatus {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,16 +25,21 @@
     background-color: aqua;
 }
 
-.character-live {
+.characterLive {
     background-color: #29773E;
 }
 
-.character-dead {
+.characterDead {
     background-color: #fa7821;
 }
 
-.card-info {
+.cardInfo {
     position: absolute;
     margin: 5px;
     bottom: 10px;
 }
+
+.labelIcon{
+    position: relative;
+    display: flex;
+  }

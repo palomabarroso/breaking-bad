@@ -1,0 +1,30 @@
+.inputSearch{
+  display: flex;
+  align-items: center;
+  height: 48px;
+  position: relative;
+}
+
+.inputSearch>input {
+  height: 48px;
+  width: 250px;
+  border: 2px solid;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  background: #000;
+  border-color: #DDD;
+  color: #FFF;
+  padding-right: 25px;
+}
+
+.inputSearch>input:focus {
+  border-color: none;
+  outline: 0;
+}
+
+.inputSearch>i{
+  color: #FFF;
+  right: 5px;
+  position: absolute;
+}

@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import axios from 'axios';
-import Card from './Card/Card';
+import Card from './Components/Card/Card';
+import InputSearch from './Components/InputSearch/InputSearch';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cards: [],
-      api: [],
-      inputSearch: ''
-    }
-    this.onChangeSearch = this.onChangeSearch.bind(this);
+  state = {
+    inputValue: '',
+    cards: [],
+    resultApi: []
   }
 
   async componentDidMount() {
@@ -27,21 +24,25 @@ class App extends Component {
       })
 
     const cards = result;
-    const api = result;
+    const resultApi = result;
     this.setState({
       cards,
-      api
+      resultApi
     })
   }
 
-  onChangeSearch(e) {
-    const { api } = this.state;
-    const arraySearch = api.filter(function (characters) {
-      const inputSearch = e.target.value.toLowerCase();
-      if (inputSearch !== '') {
-        return characters.name.toLowerCase().indexOf(inputSearch) > -1;
+  onChangeSearch = async (e) =>{
+    await this.setState({
+      inputValue: (e.target.value.toLowerCase())
+    })
+
+    const {resultApi} = this.state;
+    const {inputValue} = this.state;
+    const arraySearch = resultApi.filter(function (characters) {
+      if (inputValue !== '') {
+        return characters.name.toLowerCase().indexOf(inputValue) > -1;
       } else {
-        return api
+        return resultApi
       }
     });
 
@@ -56,15 +57,13 @@ class App extends Component {
       <div className="App">
         <div className="header">
           <img src={logo} alt="" className="logo" />
-          <input placeholder="Pesquise por personagens" className="input-search" onChange={this.onChangeSearch} />
+          <InputSearch onChangeSearch ={this.onChangeSearch}/>
         </div>
-        <div className="card-container">
+        <div className="cardContainer">
           <h2>Personagens</h2>
-          <div className="card-grid">
+          <div className="cardGrid">
             {this.state.cards.map((cardItem) => (
-              <Card
-                cardItem={cardItem}
-              />
+              <Card key={cardItem.char_id } cardItem={cardItem} />
             ))}
           </div>
         </div>

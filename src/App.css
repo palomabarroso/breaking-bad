@@ -12,7 +12,7 @@ h2{
 }
 
 .App {
-  background-color: #222;
+  background-color: #000;
   max-width: 100%;
   min-height: 100vh;
   display: flex;
@@ -31,36 +31,17 @@ h2{
   height: auto;
 }
 
-.input-search{
-  height: 48px;
-  width: 250px;
-  border: 2px solid;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  background: #222;
-  border-color: #DDD;
-  color: #FFF;
-}
-
-.input-search:focus{
-  border-color: none;
-  outline: 0;
-}
-
-.card-container{
+.cardContainer{
   margin-top: 50px;
 }
 
-.card-container h2{
+.cardContainer h2{
   margin-bottom: 20px;
 }
 
-.card-grid{
+.cardGrid{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   justify-items: stretch;
 }
-
-
