@@ -1,11 +1,13 @@
-.inputSearch{
+import styled from "styled-components";
+
+export const Container = styled.div`
   display: flex;
   align-items: center;
   height: 48px;
   position: relative;
-}
+`;
 
-.inputSearch>input {
+export const Input = styled.input`
   height: 48px;
   width: 250px;
   border: 2px solid;
@@ -13,18 +15,18 @@
   border-left: 0;
   border-right: 0;
   background: #000;
-  border-color: #DDD;
-  color: #FFF;
+  border-color: #ddd;
+  color: #fff;
   padding-right: 25px;
-}
 
-.inputSearch>input:focus {
-  border-color: none;
-  outline: 0;
-}
+  &focus {
+    border-color: none;
+    outline: 0;
+  }
+`;
 
-.inputSearch>i{
-  color: #FFF;
+export const Icon = styled.i`
+  color: #fff;
   right: 5px;
   position: absolute;
-}
+`;
